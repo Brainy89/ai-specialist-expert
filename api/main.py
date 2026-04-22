@@ -58,6 +58,6 @@ def generate_content_api(request: ContentRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Server Error: {str(e)}")
 
-if __name__ == "__main__":
-    # Local မှာ run ရင် api.main:app လို့ သုံးပါ
-    uvicorn.run("api.main:app", host="127.0.0.1", port=8000, reload=True)
+#if __name__ == "__main__":
+# Local မှာ run ရင် api.main:app လို့ သုံးပါ
+#   uvicorn.run("api.main:app", host="127.0.0.1", port=8000, reload=True)
