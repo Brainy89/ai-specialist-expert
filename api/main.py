@@ -1,8 +1,10 @@
 import uvicorn
 import sys
 import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from core.generator import start_pro_writing_agent
 from fastapi.middleware.cors import CORSMiddleware
 
 # Path ပြဿနာမတက်အောင် (core/ folder ကို သိအောင်)
