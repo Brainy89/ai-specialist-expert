@@ -16,18 +16,18 @@ class AIContentApp extends StatefulWidget {
 }
 
 class _AIContentAppState extends State<AIContentApp> {
-  // Theme အပြောင်းအလဲအတွက် variable
+  // Theme Toggle variable
   bool _isDarkMode = true;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Tech AI',
+      title: 'Content Writer', // မိုဘိုင်းအက်ပ် နာမည်
       debugShowCheckedModeBanner: false,
-      // Light Theme configuration
+      // Light Theme config
       theme: ThemeData(
         brightness: Brightness.light,
-        scaffoldBackgroundColor: const Color(0xFFF8FAFC), // နူးညံ့သော အဖြူရောင်
+        scaffoldBackgroundColor: const Color(0xFFF8FAFC),
         primaryColor: const Color(0xFF3B82F6),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
@@ -36,7 +36,7 @@ class _AIContentAppState extends State<AIContentApp> {
         ),
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme).apply(bodyColor: const Color(0xFF1E293B)),
       ),
-      // Dark Theme configuration
+      // Dark Theme config
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xFF0F172A),
@@ -70,7 +70,8 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<Map<String, String>> _messages = [];
   bool _isLoading = false;
   String selectedCategory = "General_Assistant";
-  final List<String> categories = ["General_Assistant", "Content_Writer","Networking", "Ruijie_Specialist", "Tech_Expert", "Computer_Hardware"];
+  // Specialist စာရင်းထဲတွင် Content_Writer ကို ထည့်သွင်းထားသည်
+  final List<String> categories = ["General_Assistant", "Content_Writer", "Networking", "Ruijie_Specialist", "Tech_Expert", "Computer_Hardware"];
 
   Future<void> _sendMessage() async {
     if (_controller.text.trim().isEmpty) return;
@@ -83,7 +84,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('https://ai-specialist-expert.onrender.com/generate'),
+        Uri.parse('https://ai-specialist-expert.onrender.com/generate'), // မင်းရဲ့ Render URL
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"topic": userMsg, "category": selectedCategory}),
       );
@@ -113,7 +114,15 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tech AI", style: GoogleFonts.inter(fontWeight: FontWeight.w700, letterSpacing: 0.5)),
+        // AppBar ၏ ဘယ်ဘက်တွင် Flutter Logo ထည့်ခြင်း
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0), // ပုံလေး နည်းနည်း သေးသွားအောင် padding ထည့်ပါတယ်
+          child: Image.asset(
+            'assets/app_logo.png', // မင်းရဲ့ Logo လမ်းကြောင်း
+            fit: BoxFit.contain, // ပုံမပျက်အောင် ညှိတာပါ
+          ),
+        ),
+        title: Text("Content Writer", style: GoogleFonts.inter(fontWeight: FontWeight.w700, letterSpacing: 0.5)),
         centerTitle: true,
         actions: [
           IconButton(
@@ -217,8 +226,7 @@ class _ChatScreenState extends State<ChatScreen> {
               style: TextStyle(
                 color: isUser ? Colors.white : (isDark ? Colors.white : Colors.black87),
                 fontSize: 15,
-                height: 1.6,
-                letterSpacing: 0.3,
+                height: 1.5,
               ),
             ),
           ),
