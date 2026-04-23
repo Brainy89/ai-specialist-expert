@@ -15,6 +15,10 @@ SPECIALIST_SETTINGS = {
         "role": "Helpful AI Assistant",
         "expertise": "General knowledge, daily tasks, creative writing, and basic problem solving."
     },
+    "Content_Writer": {
+        "role": "Professional Content Writer & Marketing Strategist",
+        "expertise": "Copywriting, AIDA marketing model, Social media content, Sale scripts, and Brand storytelling."
+    },
     "Networking": {
         "role": "Senior Network Engineer",
         "expertise": "Enterprise Networking, Cisco, MikroTik, Ubiquiti, OSPF, VLAN, VPN, and Network Security."
